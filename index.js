@@ -9,10 +9,16 @@ var CrbotReporter = function(helper, logger) {
 
   this.onBrowserComplete = function(browser) {
     this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
-    if (browser.lastResult.failed > 0) {
+    var results = browser.lastResult;
+    if (results.failed || results.error) {
       this.write('@@@STEP_FAILURE @@@\n');
     }
     this.write('@@@STEP_CLOSED @@@\n');
+  };
+
+  this.onBrowserError = function(browser, error) {
+    this.write(browser.name + ' ERROR\n');
+    this.write('\t' + error.replace('\n', '\n\t') + '\n');
   };
 };
 
