@@ -4,16 +4,16 @@ var CrbotReporter = function(helper, logger) {
   this.onBrowserRegister = function(browser) {
     this.write('@@@SEED_STEP ' + browser.name + '@@@\n');
     this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
-    this.write('@@@STEP_STARTED @@@\n');
+    this.write('@@@STEP_STARTED@@@\n');
   };
 
   this.onBrowserComplete = function(browser) {
     this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
     var results = browser.lastResult;
     if (results.failed || results.error) {
-      this.write('@@@STEP_FAILURE @@@\n');
+      this.write('@@@STEP_FAILURE@@@\n');
     }
-    this.write('@@@STEP_CLOSED @@@\n');
+    this.write('@@@STEP_CLOSED@@@\n');
   };
 
   this.onBrowserError = function(browser, error) {
