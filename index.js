@@ -17,6 +17,7 @@ var CrbotReporter = function(helper, logger) {
   };
 
   this.onBrowserError = function(browser, error) {
+    this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
     this.write(browser.name + ' ERROR\n');
     this.write('\t' + error.replace('\n', '\n\t') + '\n');
   };
