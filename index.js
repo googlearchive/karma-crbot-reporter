@@ -23,8 +23,8 @@ var CrbotReporter = function(helper, logger) {
   };
 
   this.onSpecComplete = function(browser, result) {
-    this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
     if (!result.success) {
+      this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
       this.write(browser.name + ' ' + result.suite[0] + ' ' + result.description + ' failed\n');
       this.write('\t' + result.log[0].replace(/\n/g, '\n\t') + '\n');
     }
