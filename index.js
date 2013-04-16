@@ -19,7 +19,15 @@ var CrbotReporter = function(helper, logger) {
   this.onBrowserError = function(browser, error) {
     this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
     this.write(browser.name + ' ERROR\n');
-    this.write('\t' + error.replace('\n', '\n\t') + '\n');
+    this.write('\t' + error.replace(/\n/g, '\n\t') + '\n');
+  };
+
+  this.onSpecComplete = function(browser, result) {
+    this.write('@@@STEP_CURSOR ' + browser.name + '@@@\n');
+    if (!result.success) {
+      this.write(browser.name + ' ' + result.suite[0] + ' ' + result.description + ' failed\n');
+      this.write('\t' + result.log[0].replace(/\n/g, '\n\t') + '\n');
+    }
   };
 };
 
