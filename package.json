@@ -17,6 +17,6 @@
   ],
   "author": "Yvonne Yip <ykyyip@google.com>",
   "peerDependencies": {
-    "karma": "~0.9"
+    "karma": ">=0.9"
   }
 }
