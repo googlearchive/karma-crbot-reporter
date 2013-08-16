@@ -1,6 +1,6 @@
 {
   "name": "karma-crbot-reporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Karma plugin. Report results to chromium buildbot.",
   "main": "index.js",
   "scripts": {
